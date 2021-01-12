@@ -19,7 +19,10 @@ Load the Pima indians diabetes dataset (Smith et al, 1988) from the mlbench pack
 Find the description of the dataset and classify the attributes according to their type
 
 ```{r}
-# install.packages("mlbench")
+install.packages("mlbench")
+install.packages("data.table")
+install.packages("dplyr")
+
 library(mlbench)
 library(data.table)
 library(dplyr)
