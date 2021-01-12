@@ -20,6 +20,7 @@ Find the description of the dataset and classify the attributes according to the
 
 ```{r}
 install.packages("mlbench")
+install.packages('curl')
 install.packages("data.table")
 install.packages("dplyr")
 
