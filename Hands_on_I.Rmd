@@ -22,6 +22,7 @@ Find the description of the dataset and classify the attributes according to the
 # install.packages("mlbench")
 library(mlbench)
 library(data.table)
+library(dplyr)
 data("PimaIndiansDiabetes")
 ?PimaIndiansDiabetes
 
@@ -45,6 +46,24 @@ table(PimaIndiansDiabetes$diabetes)
 Are there missing values in the dataset? 
 
 ```{r}
+clean_data <- PimaIndiansDiabetes[, -9]
+clean_data[clean_data <= 0] <- NA
+clean_data <- cbind(clean_data, PimaIndiansDiabetes$diabetes)
+clean_data[1:3, ]
+
+is.na(clean_data[1:3, ]) 
+# identify location of NAs in vector
+which(is.na(clean_data[1:3, ]))
+## [1] 5 8
+
+# identify count of NAs in data frame
+sum(is.na(clean_data[1:3, ]))
+## [1] 3
+# For data frames, a convenient shortcut to compute the total missing values in each column is to use colSums():
+
+colSums(is.na(clean_data[1:3, ]))
+## col1 col2 col3 col4
+
 
 ```
 
