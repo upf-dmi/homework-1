@@ -19,60 +19,36 @@ Load the Pima indians diabetes dataset (Smith et al, 1988) from the mlbench pack
 Find the description of the dataset and classify the attributes according to their type
 
 ```{r}
-install.packages("mlbench")
-install.packages('curl')
-install.packages("data.table")
-install.packages("dplyr")
+# install.packages("mlbench")
+# install.packages('curl')
+# install.packages("data.table")
+# install.packages("dplyr")
 
 library(mlbench)
 library(data.table)
 library(dplyr)
 data("PimaIndiansDiabetes")
-?PimaIndiansDiabetes
 
 ```
 
 What is the average age of the people in the study?
 
 ```{r}
-mean(PimaIndiansDiabetes$age)
-summary(PimaIndiansDiabetes$age)
-
+ 
 
 ```
 
 How many cases and controls are there in the study? 
 ```{r}
-table(PimaIndiansDiabetes$diabetes)
+ 
 
 ```
 
 Are there missing values in the dataset? 
 
 ```{r}
-clean_data <- PimaIndiansDiabetes[, -9]
-clean_data[clean_data <= 0] <- NA
-clean_data <- cbind(clean_data, PimaIndiansDiabetes$diabetes)
-clean_data[1:3, ]
-
-is.na(clean_data[1:3, ]) 
-# identify location of NAs in vector
-which(is.na(clean_data[1:3, ]))
-## [1] 5 8
-
-# identify count of NAs in data frame
-sum(is.na(clean_data[1:3, ]))
-## [1] 3
-# For data frames, a convenient shortcut to compute the total missing values in each column is to use colSums():
-
-colSums(is.na(clean_data[1:3, ]))
-## col1 col2 col3 col4
 
 
-```
-
-perform an exploratory data analysis
-```{r}
 
 ```
 
@@ -115,10 +91,10 @@ The relationship between the  Skinfold thickness of the triceps and the BMI, usi
 
 # 2. Worcester Heart Attack Study 
 
-Load the dataset of from the Worcester Heart Attack Study (Saczynski et al, 2008) 
+Load the whas.csv dataset in the data folder, from the Worcester Heart Attack Study (Saczynski et al, 2008).
 
 ```{r}
-data <- fread("https://raw.githubusercontent.com/jpinero/DMI_2021/main/datasets/whas.csv")
+
 
 ```
 
@@ -131,7 +107,7 @@ What is the average length of stay in the hospital
 What is the average length of the follow up?
 
 ```{r}
-data$follow_up <-  as.Date(data$fdate,  "%m/%d/%y") - as.Date(data$admitdate, "%m/%d/%y")
+
 
 ```
 
@@ -143,10 +119,8 @@ Plot the distribution of the age by gender. Is there any trend? What is the best
 
 
 # 3 the Heart Disease Dataset 
-Load the data from
-[here](https://raw.githubusercontent.com/jpinero/DMI_2021/main/datasets/heart_disease_dataset.csv), and the description is [here](https://raw.githubusercontent.com/jpinero/DMI_2021/main/datasets/heart_disease_description.txt).
-
-Perform an EDA on the data
+Load the heart_disease_dataset.csv dataset in the data folder, and examine the description of the variables in the file heart_disease_description.txt. 
+Then, perform an EDA on the data
 ```{r}
 
 ```
@@ -164,37 +138,7 @@ Analyze the dataset and answer which variables seem more predictive of heart dis
 
 
 
-# 4 The Hiiragi et al, 2013 gene expression microarray dataset
-
-From a dataset of a gene expression microarray (an Affymetrix mouse4302 array) that reports the transcriptomes of around 100 individual cells from mouse embryos at different time points in early development, from the paper of Ohnishi et al. (2014). More details can be found in the paper and in the documentation of the Bioconductor data package Hiiragi2013. 
-In the paper the authors divided the cells into 8 biological groups (sampleGroup), based on age, genotype and lineage, and they defined a color scheme to represent these groups (sampleColour).  
-Plot the number of samples for each of the 8 groups using the ggplot function, coloring by the original colors
-
-```{r}
-
-```
-
-Plot the relationship between probes  X1426642_at, and X1418765_at. Color them by group
-
-```{r}
-
-```
-
-The distribution of of probe intensities for one particular sample, cell number 20, which was from day E3.25
-For the probes Fgf4 = "1420085_at", Gata4 = "1418863_at",  Gata6 = "1425463_at",  and Sox2 = "1416967_at", plot
-A barplot of the mean of the expression values across all experiments (* add the error bar to the plot)
-```{r}
-
-```
-
-Explore boxplots, violin plots and density plots of the levels of expression of the selected probes across all samples
-Plot the differences in expression between a wildtype and an FGF4-KO sample. Example,  59 E4.5 (PE) and 92 E4.5 (FGF4-KO) 
-```{r}
-
-```
-
-
-
+# 4  
 
 
 # session info {.unnumbered}
