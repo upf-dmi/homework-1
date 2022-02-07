@@ -350,7 +350,7 @@ pre code {
 
 <h1 class="title toc-ignore">Hands_on_sessions_1_2_3</h1>
 <h4 class="author">Janet Piñero (<a href="mailto:janet.pinero@upf.edu">janet.pinero@upf.edu</a>)</h4>
-<h4 class="date">Last update: 01 February, 2022</h4>
+<h4 class="date">Last update: 07 February, 2022</h4>
 
 </div>
 
@@ -358,7 +358,9 @@ pre code {
 <ul>
 <li><a href="#pima-indians-diabetes-dataset">1. Pima indians diabetes dataset</a></li>
 <li><a href="#worcester-heart-attack-study">2. Worcester Heart Attack Study</a></li>
-<li><a href="#the-heart-disease-dataset">3 the Heart Disease Dataset</a></li>
+<li><a href="#a-randomized-trial-of-intraarterial-treatment-for-acute-ischemic-stroke">3 A Randomized Trial of Intraarterial Treatment for Acute Ischemic Stroke</a><ul>
+<li><a href="#reproduce-table-1-from-the-publication">3.1 Reproduce table 1 from the publication</a></li>
+</ul></li>
 <li><a href="#the-hiiragi-et-al-2013-gene-expression-microarray-dataset">4 The Hiiragi et al, 2013 gene expression microarray dataset</a></li>
 <li><a href="#session-info">session info</a></li>
 </ul>
@@ -368,30 +370,9 @@ pre code {
 <h1>1. Pima indians diabetes dataset</h1>
 <p>Load the Pima indians diabetes dataset (Smith et al, 1988) from the mlbench package.</p>
 <p>Find the description of the dataset and classify the attributes according to their type</p>
-<pre class="r"><code># install.packages(&quot;mlbench&quot;)
-# install.packages('curl')
-# install.packages(&quot;data.table&quot;)
-# install.packages(&quot;dplyr&quot;)
-
-library(mlbench)
-library(data.table)
-library(dplyr)</code></pre>
-<pre><code>## 
-## Attaching package: 'dplyr'</code></pre>
-<pre><code>## The following objects are masked from 'package:data.table':
-## 
-##     between, first, last</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>data(&quot;PimaIndiansDiabetes&quot;)</code></pre>
 <p>What is the average age of the people in the study?</p>
 <p>How many cases and controls are there in the study?</p>
 <p>Are there missing values in the dataset?</p>
-<p>perform an exploratory data analysis</p>
 <p>Which variables/features include outliers? How did you detected them?</p>
 <p>Perform imputation on missing data. Justify your choices</p>
 <p>From the Pima indians dataset, and visualization hands on, plot using ggplot2: Do not use the colors by default from ggplot2!! Add the plot titles.</p>
@@ -402,17 +383,105 @@ library(dplyr)</code></pre>
 </div>
 <div id="worcester-heart-attack-study" class="section level1">
 <h1>2. Worcester Heart Attack Study</h1>
-<p>Load the <a href="https://raw.githubusercontent.com/jpinero/DMI_2021/main/datasets/whas.csv">dataset</a> from the Worcester Heart Attack Study (Saczynski et al, 2008).</p>
+<p>Load the whas.csv dataset in the data folder, from the Worcester Heart Attack Study (Saczynski et al, 2008).</p>
 <p>What is the average length of stay in the hospital</p>
 <p>What is the average length of the follow up?</p>
 <p>Plot the distribution of the age by gender. Is there any trend? What is the best way to visualize this?**</p>
 </div>
-<div id="the-heart-disease-dataset" class="section level1">
-<h1>3 the Heart Disease Dataset</h1>
-<p>Load the data from <a href="https://raw.githubusercontent.com/jpinero/DMI_2021/main/datasets/heart_disease_dataset.csv">here</a>, and the description is <a href="https://raw.githubusercontent.com/jpinero/DMI_2021/main/datasets/heart_disease_description.txt">here</a>.</p>
-<p>Perform an EDA on the data</p>
-<p>Is this a balanced dataset? Can you do something to solve this?*</p>
-<p>Analyze the dataset and answer which variables seem more predictive of heart disease*</p>
+<div id="a-randomized-trial-of-intraarterial-treatment-for-acute-ischemic-stroke" class="section level1">
+<h1>3 A Randomized Trial of Intraarterial Treatment for Acute Ischemic Stroke</h1>
+<p>The dataset trial_stroke in the data folder has been simulated to reproduce the results of the following publication <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa1411587" class="uri">https://www.nejm.org/doi/full/10.1056/NEJMoa1411587</a></p>
+<p><a href="http://www.nejm.org/doi/full/10.1056/NEJMoa1411587" class="uri">http://www.nejm.org/doi/full/10.1056/NEJMoa1411587</a>.</p>
+<table>
+<colgroup>
+<col width="21%"></col>
+<col width="78%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>studyid</code></td>
+<td>Study ID # (z001 through z500)</td>
+</tr>
+<tr class="even">
+<td align="right"><code>trt</code></td>
+<td>Treatment group (Intervention or Control)</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>age</code></td>
+<td>Age in years</td>
+</tr>
+<tr class="even">
+<td align="right"><code>sex</code></td>
+<td>Male or Female</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>nihss</code></td>
+<td>NIH Stroke Scale Score (can range from 0-42; higher scores indicate more severe neurological deficits)</td>
+</tr>
+<tr class="even">
+<td align="right"><code>location</code></td>
+<td>Stroke Location - Left or Right Hemisphere</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>hx.isch</code></td>
+<td>History of Ischemic Stroke (Yes/No)</td>
+</tr>
+<tr class="even">
+<td align="right"><code>afib</code></td>
+<td>Atrial Fibrillation (1 = Yes, 0 = No)</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>dm</code></td>
+<td>Diabetes Mellitus (1 = Yes, 0 = No)</td>
+</tr>
+<tr class="even">
+<td align="right"><code>mrankin</code></td>
+<td>Pre-stroke modified Rankin scale score (0, 1, 2 or &gt; 2) indicating functional disability - complete range is 0 (no symptoms) to 6 (death)</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>sbp</code></td>
+<td>Systolic blood pressure, in mm Hg</td>
+</tr>
+<tr class="even">
+<td align="right"><code>iv.altep</code></td>
+<td>Treatment with IV alteplase (Yes/No)</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>time.iv</code></td>
+<td>Time from stroke onset to start of IV alteplase (minutes) if iv.altep=Yes</td>
+</tr>
+<tr class="even">
+<td align="right"><code>aspects</code></td>
+<td>Alberta Stroke Program Early Computed Tomography score, which measures extent of stroke from 0 - 10; higher scores indicate fewer early ischemic changes</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>ia.occlus</code></td>
+<td>Intracranial arterial occlusion, based on vessel imaging - five categories<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></td>
+</tr>
+<tr class="even">
+<td align="right"><code>extra.ica</code></td>
+<td>Extracranial ICA occlusion (1 = Yes, 0 = No)</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>time.rand</code></td>
+<td>Time from stroke onset to study randomization, in minutes</td>
+</tr>
+<tr class="even">
+<td align="right"><code>time.punc</code></td>
+<td>Time from stroke onset to groin puncture, in minutes (only if Intervention)</td>
+</tr>
+</tbody>
+</table>
+<div id="reproduce-table-1-from-the-publication" class="section level2">
+<h2>3.1 Reproduce table 1 from the publication</h2>
+<p>Hint: use the <a href="https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html">tableone</a> R package</p>
+</div>
 </div>
 <div id="the-hiiragi-et-al-2013-gene-expression-microarray-dataset" class="section level1">
 <h1>4 The Hiiragi et al, 2013 gene expression microarray dataset</h1>
@@ -433,16 +502,14 @@ Plot the number of samples for each of the 8 groups using the ggplot function, c
 [9] LC_ADDRESS=C LC_TELEPHONE=C<br />
 [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C</p>
 <p>attached base packages: [1] stats graphics grDevices utils datasets methods base</p>
-<p>other attached packages: [1] dplyr_1.0.7 data.table_1.14.2 mlbench_2.1-1</p>
-<p>loaded via a namespace (and not attached): [1] knitr_1.37 magrittr_2.0.1 tidyselect_1.1.1 R6_2.5.1<br />
-[5] rlang_0.4.12 fastmap_1.1.0 fansi_1.0.2 blob_1.2.2<br />
-[9] stringr_1.4.0 tools_3.6.1 xfun_0.29 utf8_1.2.2<br />
-[13] DBI_1.1.2 jquerylib_0.1.3 htmltools_0.5.2 ellipsis_0.3.2<br />
-[17] assertthat_0.2.1 yaml_2.2.1 digest_0.6.29 tibble_3.1.6<br />
-[21] lifecycle_1.0.1 crayon_1.4.2 purrr_0.3.4 sass_0.3.1<br />
-[25] vctrs_0.3.8 glue_1.6.1 evaluate_0.14 rmarkdown_2.7<br />
-[29] stringi_1.7.6 compiler_3.6.1 bslib_0.2.4 pillar_1.6.4<br />
-[33] generics_0.1.1 jsonlite_1.7.3 pkgconfig_2.0.3</p>
+<p>loaded via a namespace (and not attached): [1] digest_0.6.29 R6_2.5.1 jsonlite_1.7.3 magrittr_2.0.1 [5] evaluate_0.14 stringi_1.7.6 rlang_0.4.12 jquerylib_0.1.3 [9] bslib_0.2.4 rmarkdown_2.7 tools_3.6.1 stringr_1.4.0<br />
+[13] xfun_0.29 yaml_2.2.1 fastmap_1.1.0 compiler_3.6.1 [17] htmltools_0.5.2 knitr_1.37 sass_0.3.1</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The five categories are Intracranial ICA, ICA with involvement of the M1 middle cerebral artery segment, M1 middle cerebral artery segment, M2 middle cerebral artery segment, A1 or A2 anterior cerebral artery segment<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
 
 

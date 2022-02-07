@@ -19,15 +19,7 @@ Load the Pima indians diabetes dataset (Smith et al, 1988) from the mlbench pack
 Find the description of the dataset and classify the attributes according to their type
 
 ```{r}
-# install.packages("mlbench")
-# install.packages('curl')
-# install.packages("data.table")
-# install.packages("dplyr")
 
-library(mlbench)
-library(data.table)
-library(dplyr)
-data("PimaIndiansDiabetes")
 
 ```
 
@@ -98,8 +90,8 @@ Load the whas.csv dataset in the data folder, from the Worcester Heart Attack St
 
 ```
 
-
 What is the average length of stay in the hospital	
+
 ```{r}
 
 ```
@@ -111,34 +103,89 @@ What is the average length of the follow up?
 
 ```
 
-
 Plot the distribution of the age by gender. Is there any trend? What is the best way to visualize this?** 
+
 ```{r}
 
 ```
 
+
+# 3  A Randomized Trial of Intraarterial Treatment for Acute Ischemic Stroke
+The dataset trial_stroke in the data folder has been simulated to reproduce the results of the following publication
+https://www.nejm.org/doi/full/10.1056/NEJMoa1411587
+
+ http://www.nejm.org/doi/full/10.1056/NEJMoa1411587.
+
+Variable |	Description
+----------: | -----------------------------------------
+`studyid` |	Study ID # (z001 through z500)
+`trt`	| Treatment group (Intervention or Control)
+`age`	| Age in years
+`sex`	| Male or Female
+`nihss`	| NIH Stroke Scale Score (can range from 0-42; higher scores indicate more severe neurological deficits)
+`location` |	Stroke Location - Left or Right Hemisphere
+`hx.isch`	| History of Ischemic Stroke (Yes/No)
+`afib`	| Atrial Fibrillation (1 = Yes, 0 = No)
+`dm`	| Diabetes Mellitus (1 = Yes, 0 = No)
+`mrankin` |	Pre-stroke modified Rankin scale score (0, 1, 2 or > 2) indicating functional disability - complete range is 0 (no symptoms) to 6 (death)
+`sbp`	| Systolic blood pressure, in mm Hg
+`iv.altep`	| Treatment with IV alteplase (Yes/No)
+`time.iv`	| Time from stroke onset to start of IV alteplase (minutes) if iv.altep=Yes
+`aspects`	| Alberta Stroke Program Early Computed Tomography score, which measures extent of stroke from 0 - 10; higher scores indicate fewer early ischemic changes
+`ia.occlus`	| Intracranial arterial occlusion, based on vessel imaging - five categories^[The five categories are Intracranial ICA, ICA with involvement of the M1 middle cerebral artery segment, M1 middle cerebral artery segment, M2 middle cerebral artery segment, A1 or A2 anterior cerebral artery segment]
+`extra.ica`	| Extracranial ICA occlusion (1 = Yes, 0 = No)
+`time.rand`	| Time from stroke onset to study randomization, in minutes
+`time.punc`	| Time from stroke onset to groin puncture, in minutes (only if Intervention)
+
+
+```{r  }
+
+```
+
+## 3.1 Reproduce table 1 from the publication
+Hint: use the [tableone](https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html) R package
 
 # 3 the Heart Disease Dataset 
-Load the heart_disease_dataset.csv dataset in the data folder, and examine the description of the variables in the file heart_disease_description.txt. 
-Then, perform an EDA on the data
-```{r}
+Load the data from
+[here](https://raw.githubusercontent.com/jpinero/DMI_2021/main/datasets/heart_disease_dataset.csv), and the description is [here](https://raw.githubusercontent.com/jpinero/DMI_2021/main/datasets/heart_disease_description.txt).
 
-```
-
-Is this a balanced dataset? Can you do something to solve this?*
-```{r}
-
-```
-
-
-Analyze the dataset and answer which variables seem more predictive of heart disease*
+Perform an EDA on the data
 ```{r}
 
 ```
 
 
+# 5 The Hiiragi et al, 2013 gene expression microarray dataset
 
-# 4  
+From a dataset of a gene expression microarray (an Affymetrix mouse4302 array) that reports the transcriptomes of around 100 individual cells from mouse embryos at different time points in early development, from the paper of Ohnishi et al. (2014). More details can be found in the paper and in the documentation of the Bioconductor data package Hiiragi2013. 
+In the paper the authors divided the cells into 8 biological groups (sampleGroup), based on age, genotype and lineage, and they defined a color scheme to represent these groups (sampleColour).  
+Plot the number of samples for each of the 8 groups using the ggplot function, coloring by the original colors
+
+```{r}
+
+```
+
+Plot the relationship between probes  X1426642_at, and X1418765_at. Color them by group
+
+```{r}
+
+```
+
+The distribution of of probe intensities for one particular sample, cell number 20, which was from day E3.25
+For the probes Fgf4 = "1420085_at", Gata4 = "1418863_at",  Gata6 = "1425463_at",  and Sox2 = "1416967_at", plot
+A barplot of the mean of the expression values across all experiments (* add the error bar to the plot)
+
+```{r}
+
+```
+
+Explore boxplots, violin plots and density plots of the levels of expression of the selected probes across all samples
+Plot the differences in expression between a wildtype and an FGF4-KO sample. Example,  59 E4.5 (PE) and 92 E4.5 (FGF4-KO) 
+
+```{r}
+
+```
+
 
 
 # session info {.unnumbered}
